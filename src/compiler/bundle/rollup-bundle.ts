@@ -6,6 +6,7 @@ import pathsResolution from './rollup-plugins/paths-resolution';
 import localResolution from './rollup-plugins/local-resolution';
 import transpiledInMemoryPlugin from './rollup-plugins/transpiled-in-memory';
 import bundleEntryFile from './rollup-plugins/bundle-entry-file';
+import bundleJson from './rollup-plugins/json';
 import { InputOptions, OutputChunk, rollup } from 'rollup';
 import nodeEnvVars from './rollup-plugins/node-env-vars';
 import resolveCollections from './rollup-plugins/resolve-collections';
@@ -30,6 +31,7 @@ export async function createBundle(config: Config, compilerCtx: CompilerCtx, bui
         include: 'node_modules/**',
         sourceMap: false
       }),
+      bundleJson(config),
       globals(),
       builtins(),
       bundleEntryFile(config, entryModules),
