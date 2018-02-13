@@ -23,6 +23,7 @@ export function getBuildContext(config: Config, compilerCtx: CompilerCtx, watche
     requiresFullBuild: requiresFullBuild,
     buildId: compilerCtx.activeBuildId,
     sourceStrings: [],
+    collections: [],
     moduleGraphs: [],
     diagnostics: [],
     entryPoints: [],

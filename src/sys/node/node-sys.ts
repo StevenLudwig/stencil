@@ -18,6 +18,7 @@ export class NodeSystem implements StencilSystem {
   private runtime: string;
   private sysUtil: any;
   private typescriptPackageJson: PackageJsonData;
+  private resolveModuleCache: { [cacheKey: string]: string } = {};
 
   fs: FileSystem;
   path: Path;
@@ -221,6 +222,11 @@ export class NodeSystem implements StencilSystem {
   }
 
   resolveModule(fromDir: string, moduleId: string) {
+    const cacheKey = `${fromDir}:${moduleId}`;
+    if (this.resolveModuleCache[cacheKey]) {
+      return this.resolveModuleCache[cacheKey];
+    }
+
     const Module = require('module');
 
     fromDir = path.resolve(fromDir);
@@ -245,7 +251,11 @@ export class NodeSystem implements StencilSystem {
         continue;
       }
 
-      return normalizePath(packageJsonFilePath);
+      const resolvedModulePath = normalizePath(packageJsonFilePath);
+
+      this.resolveModuleCache[cacheKey] = resolvedModulePath;
+
+      return resolvedModulePath;
     }
 
     throw new Error(`error loading "${moduleId}" from "${fromDir}"`);

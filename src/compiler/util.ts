@@ -13,10 +13,10 @@ export function getCompilerCtx(config: Config, compilerCtx?: CompilerCtx) {
   compilerCtx.events = compilerCtx.events || new BuildEvents(config);
   compilerCtx.appFiles = compilerCtx.appFiles || {};
   compilerCtx.moduleFiles = compilerCtx.moduleFiles || {};
-  compilerCtx.rollupCache = compilerCtx.rollupCache || {};
-  compilerCtx.collections = compilerCtx.collections || {};
+  compilerCtx.collections = compilerCtx.collections || [];
   compilerCtx.compiledModuleJsText = compilerCtx.compiledModuleJsText || {};
   compilerCtx.compiledModuleLegacyJsText = compilerCtx.compiledModuleLegacyJsText || {};
+  compilerCtx.resolvedModuleIds = compilerCtx.resolvedModuleIds || [];
 
   if (typeof compilerCtx.activeBuildId !== 'number') {
     compilerCtx.activeBuildId = -1;

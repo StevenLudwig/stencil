@@ -69,7 +69,6 @@ export function configFileReload(config: Config) {
     config.distDir = updatedConfig.distDir;
     config.bundles = updatedConfig.bundles;
     config.collectionDir = updatedConfig.collectionDir;
-    config.collections = updatedConfig.collections;
     config.includeSrc = updatedConfig.includeSrc;
     config.excludeSrc = updatedConfig.excludeSrc;
     config.generateDistribution = updatedConfig.generateDistribution;

@@ -5,6 +5,7 @@ export interface BuildCtx {
   graphData?: GraphData;
   sourceStrings?: d.SourceString[];
   moduleGraphs?: d.ModuleGraph[];
+  collections?: d.Collection[];
   buildId: number;
   requiresFullBuild: boolean;
   diagnostics: d.Diagnostic[];
@@ -80,8 +81,11 @@ export interface BuildStats {
   };
   components: BuildComponent[];
   entries: BuildEntry[];
+  sourceGraph: BuildSourceGraph;
   collections: {
     name: string;
+    source: string;
+    tags: string[];
   }[];
 }
 
@@ -103,6 +107,11 @@ export interface BuildBundle {
   mode?: string;
   scopedStyles?: boolean;
   target?: string;
+}
+
+
+export interface BuildSourceGraph {
+  [filePath: string]: string[];
 }
 
 
