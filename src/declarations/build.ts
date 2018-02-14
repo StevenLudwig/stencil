@@ -28,6 +28,7 @@ export interface BuildCtx {
   filesUpdated: string[];
   filesAdded: string[];
   shouldAbort?(): boolean;
+  data?: any;
   finish?(): Promise<BuildResults>;
 }
 

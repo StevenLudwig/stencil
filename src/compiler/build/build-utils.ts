@@ -28,6 +28,7 @@ export function getBuildContext(config: Config, compilerCtx: CompilerCtx, watche
     entryPoints: [],
     entryModules: [],
     components: [],
+    data: {},
     transpileBuildCount: 0,
     bundleBuildCount: 0,
     appFileBuildCount: 0,
